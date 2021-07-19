@@ -5,9 +5,9 @@ import 'package:red_wfi/Pages/menu.dart';
 import 'package:red_wfi/Pages/slider_explain_page.dart';
 
 import 'Pages/Screens/GpsScreen.dart';
- 
+
 void main() => runApp(MyApp());
- 
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,17 +15,24 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: 'FistPage',
       theme: ThemeData(
-        textTheme: 
-        GoogleFonts.vesperLibreTextTheme(
-          Theme.of(context).textTheme,),
+        textTheme: GoogleFonts.vesperLibreTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       routes: {
-        'FistPage': ( _ ) => SliderExplainPage(),
-        'MenuPage': ( _ ) => MenuScreen(),
-        'CardDetail': ( _ ) => CardDetailScreen(),
-        'GPSMap': ( _ ) => GpsScreen(),
+        'FistPage': (_) => SliderExplainPage(),
+        'MenuPage': (_) => MenuScreen(),
+        'CardDetail': (_) => CardDetailScreen(
+              // commonname: '',
+              // keyServices: '',
+              // macaddr: '',
+              // manuf: '',
+              // phyname: '',
+              // typeService: '',
+              // uuidService: '',
+            ),
+        'GPSMap': (_) => GpsScreen(),
       },
     );
   }
 }
-

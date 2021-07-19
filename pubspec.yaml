@@ -32,6 +32,7 @@ dependencies:
   http: ^0.13.3
   google_fonts: ^2.1.0
   json_serializable: ^4.1.4
+  curved_navigation_bar: ^1.0.1
   
 
 dev_dependencies:
