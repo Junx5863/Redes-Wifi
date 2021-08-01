@@ -1,20 +1,20 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:red_wfi/Model/ModelRedData.dart';
+import 'package:red_wfi/Model/Model_aps_data.dart';
 
 class ApiServices {
 
-  Future<List<RedData>?> getData() async {
+  Future<List<ApsData>?> getData() async {
     final response = await http.get(Uri.parse(
-        'https://firebasestorage.googleapis.com/v0/b/proyecto-de-grado-7c7d6.appspot.com/o/convert.json?alt=media&token=bb4b1284-bb78-40ef-8c7e-6535a7762afb.json'));
+        'https://pruebasparatodotipo-8849c-default-rtdb.firebaseio.com/aps.json'));
 
     try {
       if (response.statusCode == 200) {
 
         List jsonResponse = json.decode(response.body);
         
-        return jsonResponse.map((job) => RedData.fromJson(job)).toList();
+        return jsonResponse.map((job) => ApsData.fromJson(job)).toList();
       } else {
         throw Exception('Fallo al cargar el Api');
       }

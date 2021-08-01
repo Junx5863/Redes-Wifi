@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:red_wfi/Pages/Screens/FilterScreen.dart';
-import 'package:red_wfi/Pages/Screens/GpsScreen.dart';
-
-import 'Screens/homeScreen.dart';
+import 'package:red_wfi/Pages/view/menu_screen/FilterScreen.dart';
+import 'package:red_wfi/Pages/view/menu_screen/choose_screen.dart';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:red_wfi/Pages/view/menu_screen/gps_list.dart';
+
 
 class MenuScreen extends StatefulWidget {
   //const MenuScreen({Key key}) : super(key: key);
@@ -14,14 +14,9 @@ class MenuScreen extends StatefulWidget {
   _MenuScreenState createState() => _MenuScreenState();
 }
 
-enum BottomIcons { Home, Gps, Filter }
-
 class _MenuScreenState extends State<MenuScreen> {
-
   int _page = 0;
-  final _listPage = [HomeScreen(),
-          GpsScreen(),
-          FilterScreen() ];
+  final _listPage = [ChooseScreen(), GpsList(), FilterScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +24,7 @@ class _MenuScreenState extends State<MenuScreen> {
       body: _listPage[_page],
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.black,
+        height: 50,
         items: [
           Icon(Icons.home, size: 30),
           Icon(Icons.gps_fixed, size: 30),
@@ -40,7 +36,6 @@ class _MenuScreenState extends State<MenuScreen> {
           });
         },
       ),
-      
     );
   }
 }

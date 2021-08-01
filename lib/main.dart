@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:red_wfi/Pages/Screens/detailCard/DetailCard_Screen.dart';
+import 'package:red_wfi/Pages/view/detail_card/detail_info_red_screen.dart';
 import 'package:red_wfi/Pages/menu.dart';
 import 'package:red_wfi/Pages/slider_explain_page.dart';
 
-import 'Pages/Screens/GpsScreen.dart';
+import 'Pages/view/menu_screen/gps_list.dart';
+import 'Pages/view/screen/aps_list_to_gps.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,16 +23,8 @@ class MyApp extends StatelessWidget {
       routes: {
         'FistPage': (_) => SliderExplainPage(),
         'MenuPage': (_) => MenuScreen(),
-        'CardDetail': (_) => CardDetailScreen(
-              // commonname: '',
-              // keyServices: '',
-              // macaddr: '',
-              // manuf: '',
-              // phyname: '',
-              // typeService: '',
-              // uuidService: '',
-            ),
-        'GPSMap': (_) => GpsScreen(),
+        'CardDetail': (_) => CardDetailScreen(),
+        'GPSListMap': (_) => GpsList(),
       },
     );
   }
