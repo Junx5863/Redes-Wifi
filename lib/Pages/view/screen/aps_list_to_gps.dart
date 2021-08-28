@@ -37,6 +37,12 @@ class _ListToGpsState extends State<ScreenListToGps> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_new_outlined),
+            onPressed: (){
+              Navigator.of(context).pop();
+            },
+          ),
           backgroundColor: Colors.grey[600],
           title: Text(
             'Name: ${widget.nombre} ',
@@ -52,7 +58,7 @@ class _ListToGpsState extends State<ScreenListToGps> {
           zoomControlsEnabled: false,
           initialCameraPosition: CameraPosition(
             target: LatLng(widget.latitud, widget.longitud),
-            zoom: 15.0,
+            zoom: 20.0,
           ),
           markers: Set.from(mapController.allMarkers),
         ),

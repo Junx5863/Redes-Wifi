@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
-//Pages
-import 'package:red_wfi/Pages/menu.dart';
 import 'package:red_wfi/Pages/view/detail_card/components/show_Ddialog.dart';
 import 'package:red_wfi/Pages/view/screen/aps_list_to_gps.dart';
 
-class CardDetailScreen extends StatelessWidget {
+class DetailBridgetScreen extends StatelessWidget {
   final String? channel;
   final String? commonname;
   final String? macaddr;
@@ -14,13 +10,12 @@ class CardDetailScreen extends StatelessWidget {
   final double? latitud;
   final double? longitud;
   final String? typeService;
-  final int? clients;
+  final int? aps;
   final int? fixMode;
   final DateTime? firstSeen;
   final DateTime? lastSeen;
-  final String? ssId;
 
-  const CardDetailScreen({
+  const DetailBridgetScreen({
     this.commonname, //L
     this.keyServices, //L
     this.macaddr, // L
@@ -28,10 +23,9 @@ class CardDetailScreen extends StatelessWidget {
     this.longitud, //L
     this.latitud, //L
     this.typeService, //L
-    this.ssId,
-    this.clients,
-    this.fixMode,
-    this.firstSeen,
+    this.aps, 
+    this.fixMode, 
+    this.firstSeen, 
     this.lastSeen,
   });
 
@@ -57,44 +51,46 @@ class CardDetailScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  this.latitud != 0
-                  ?GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ScreenListToGps(
-                            latitud: this.latitud!.toDouble(),
-                            longitud: this.longitud!.toDouble(),
-                            nombre: this.commonname!,
-                            // nombre: this.commonname!,
+                  this.latitud! != 0
+                      ? GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ScreenListToGps(
+                                  latitud: this.latitud!.toDouble(),
+                                  longitud: this.longitud!.toDouble(),
+                                  nombre: this.commonname!,
+                                  // nombre: this.commonname!,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.gps_fixed),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'GPS',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              bottomLeft: Radius.circular(20))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(Icons.gps_fixed),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'GPS',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w500),
-                          )
-                        ],
-                      ),
-                    ),
-                  ): GestureDetector(
+                        )
+                      : GestureDetector(
                           onTap: () {
                             final snackBar = SnackBar(
                               shape: RoundedRectangleBorder(
@@ -178,8 +174,8 @@ class CardDetailScreen extends StatelessWidget {
                           onPressed: () {
                             showDialog(
                                 context: context,
-                                builder: (BuildContext contex) {
-                                  return ShowMessageApsScreen();
+                                builder: (BuildContext context) {
+                                  return ShowMessageScreen();
                                 });
                           },
                           icon: Icon(
@@ -194,13 +190,11 @@ class CardDetailScreen extends StatelessWidget {
             Flexible(
               child: Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: MyItems(
-                      this.commonname,
+                  child: MyItems(this.commonname,
                       this.macaddr,
                       this.channel,
                       this.keyServices,
-                      this.ssId,
-                      this.clients,
+                      this.aps,
                       this.fixMode,
                       this.firstSeen,
                       this.lastSeen)),
@@ -210,90 +204,4 @@ class CardDetailScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget MyItems(
-  String? commonname,
-  String? maccAddres,
-  String? phyName,
-  String? keyServices,
-  String? uuidService,
-  int? clients,
-  int? fixMode,
-  DateTime? fistSeen,
-  DateTime? lastSeen,
-
-) {
-  List<String> info = [
-    commonname!,
-    maccAddres!,
-    phyName!,
-    keyServices!,
-    uuidService!,
-    fistSeen!.toString(),
-    lastSeen!.toString(),
-    fixMode!.toString(),
-    clients.toString() != null ? clients.toString() : '0'
-  ];
-
-  List<String> titleInfo = [
-    'Common Name',
-    'Device MAC',
-    'Channel',
-    'Key',
-    'SSID',
-    'Firts Seen',
-    'Last Seen',
-    'Fix Mode',
-    'Clients',
-  ];
-  return StaggeredGridView.countBuilder(
-    crossAxisCount: 2,
-    itemCount: info.length,
-    itemBuilder: (context, index) {
-      return Material(
-        color: Colors.white,
-        elevation: 14.0,
-        shadowColor: Colors.black,
-        borderRadius: BorderRadius.circular(24.0),
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        titleInfo[index],
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.grey[850],
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.black,
-                    ),
-                    Text(
-                      info[index],
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-    staggeredTileBuilder: (index) => StaggeredTile.extent(2, 150),
-    mainAxisSpacing: 16.0,
-    crossAxisSpacing: 4.0,
-  );
 }

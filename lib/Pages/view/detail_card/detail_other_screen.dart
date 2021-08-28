@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
-//Pages
-import 'package:red_wfi/Pages/menu.dart';
-import 'package:red_wfi/Pages/view/detail_card/components/show_Ddialog.dart';
 import 'package:red_wfi/Pages/view/screen/aps_list_to_gps.dart';
 
-class CardDetailScreen extends StatelessWidget {
+import '../../menu.dart';
+
+class DetailOtherScreen extends StatelessWidget {
   final String? channel;
   final String? commonname;
   final String? macaddr;
@@ -14,26 +12,23 @@ class CardDetailScreen extends StatelessWidget {
   final double? latitud;
   final double? longitud;
   final String? typeService;
-  final int? clients;
+  final int? aps;
   final int? fixMode;
   final DateTime? firstSeen;
   final DateTime? lastSeen;
-  final String? ssId;
 
-  const CardDetailScreen({
-    this.commonname, //L
-    this.keyServices, //L
-    this.macaddr, // L
-    this.channel, //L
-    this.longitud, //L
-    this.latitud, //L
-    this.typeService, //L
-    this.ssId,
-    this.clients,
-    this.fixMode,
-    this.firstSeen,
-    this.lastSeen,
-  });
+  const DetailOtherScreen(
+      {this.commonname, //L
+      this.keyServices, //L
+      this.macaddr, // L
+      this.channel, //L
+      this.longitud, //L
+      this.latitud, //L
+      this.typeService, //L
+      this.aps,
+      this.fixMode,
+      this.firstSeen,
+      this.lastSeen});
 
   @override
   Widget build(BuildContext context) {
@@ -57,44 +52,46 @@ class CardDetailScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  this.latitud != 0
-                  ?GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ScreenListToGps(
-                            latitud: this.latitud!.toDouble(),
-                            longitud: this.longitud!.toDouble(),
-                            nombre: this.commonname!,
-                            // nombre: this.commonname!,
+                  this.latitud! != 0
+                      ? GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ScreenListToGps(
+                                  latitud: this.latitud!.toDouble(),
+                                  longitud: this.longitud!.toDouble(),
+                                  nombre: this.commonname!,
+                                  // nombre: this.commonname!,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.gps_fixed),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'GPS',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              bottomLeft: Radius.circular(20))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(Icons.gps_fixed),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'GPS',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w500),
-                          )
-                        ],
-                      ),
-                    ),
-                  ): GestureDetector(
+                        )
+                      : GestureDetector(
                           onTap: () {
                             final snackBar = SnackBar(
                               shape: RoundedRectangleBorder(
@@ -164,29 +161,13 @@ class CardDetailScreen extends StatelessWidget {
                     endIndent: 60,
                     thickness: 1.5,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        '${this.typeService}',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext contex) {
-                                  return ShowMessageApsScreen();
-                                });
-                          },
-                          icon: Icon(
-                            Icons.warning_rounded,
-                            color: Colors.white,
-                          ))
-                    ],
+                  Text(
+                    '${this.typeService}',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.start,
                   )
                 ],
               ),
@@ -199,8 +180,7 @@ class CardDetailScreen extends StatelessWidget {
                       this.macaddr,
                       this.channel,
                       this.keyServices,
-                      this.ssId,
-                      this.clients,
+                      this.aps,
                       this.fixMode,
                       this.firstSeen,
                       this.lastSeen)),
@@ -217,35 +197,31 @@ Widget MyItems(
   String? maccAddres,
   String? phyName,
   String? keyServices,
-  String? uuidService,
-  int? clients,
+  int? aps,
   int? fixMode,
   DateTime? fistSeen,
   DateTime? lastSeen,
-
 ) {
-  List<String> info = [
+  List info = [
     commonname!,
     maccAddres!,
     phyName!,
     keyServices!,
-    uuidService!,
     fistSeen!.toString(),
     lastSeen!.toString(),
     fixMode!.toString(),
-    clients.toString() != null ? clients.toString() : '0'
+    aps != null ? aps.toString() : '0',
   ];
 
   List<String> titleInfo = [
-    'Common Name',
-    'Device MAC',
-    'Channel',
-    'Key',
-    'SSID',
+    'Common Name:',
+    'Device MAC:',
+    'Channel:',
+    'Key:',
     'Firts Seen',
     'Last Seen',
     'Fix Mode',
-    'Clients',
+    'Aps:'
   ];
   return StaggeredGridView.countBuilder(
     crossAxisCount: 2,

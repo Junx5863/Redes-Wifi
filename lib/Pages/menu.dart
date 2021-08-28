@@ -16,7 +16,7 @@ class MenuScreen extends StatefulWidget {
 
 class _MenuScreenState extends State<MenuScreen> {
   int _page = 0;
-  final _listPage = [ChooseScreen(), GpsList(), FilterScreen()];
+  final _listPage = [ChooseScreen(), GpsList()];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _MenuScreenState extends State<MenuScreen> {
         items: [
           Icon(Icons.home, size: 30),
           Icon(Icons.gps_fixed, size: 30),
-          Icon(Icons.filter_alt_rounded, size: 30)
+          
         ],
         onTap: (index) {
           setState(() {

@@ -3,7 +3,6 @@ import 'package:red_wfi/Model/Model_aps_data.dart';
 import 'package:red_wfi/Pages/view/detail_card/detail_info_red_screen.dart';
 import 'package:red_wfi/Services/services_info_red.dart';
 
-
 class HomeScreen extends StatefulWidget {
   //HomeScreen({}) : super(key: key);
 
@@ -12,8 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
-
   ApiServices dataRed = ApiServices();
 
   @override
@@ -32,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
-                  itemCount: snapshot.data?.length ,
+                  itemCount: snapshot.data?.length,
                   itemBuilder: (BuildContext context, index) {
                     return Padding(
                       padding: EdgeInsets.only(bottom: 30),
@@ -42,14 +39,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => CardDetailScreen(
-                                channel:      snapshot.data![index].channel,
-                                commonname:   snapshot.data![index].commonName,
-                                macaddr:      snapshot.data![index].deviceMac,
-                                keyServices:  snapshot.data![index].key,
-                                latitud:      snapshot.data![index].latitude  ,
-                                longitud:     snapshot.data![index].longitude,
-                                ssId:         snapshot.data![index].ssid,
-                                typeService:  snapshot.data![index].type,
+                                channel:     snapshot.data![index].channel,
+                                commonname:  snapshot.data![index].commonName,
+                                macaddr:     snapshot.data![index].deviceMac,
+                                keyServices: snapshot.data![index].key,
+                                latitud:     snapshot.data![index].latitude,
+                                longitud:    snapshot.data![index].longitude,
+                                ssId:        snapshot.data![index].ssid,
+                                typeService: snapshot.data![index].type,
+                                firstSeen:   snapshot.data![index].firstSeen,
+                                lastSeen:    snapshot.data![index].lastSeen,
+                                fixMode:     snapshot.data![index].fixMode,
+                                clients:
+                                    snapshot.data![index].clients?.length != null
+                                        ? snapshot.data![index].clients?.length
+                                        : 0,
                               ),
                             ),
                           );
@@ -130,4 +134,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

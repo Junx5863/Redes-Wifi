@@ -13,15 +13,69 @@ class SliderExplainPage extends StatelessWidget {
           pages: [
             PageViewModel(
               titleWidget: Text(
-                'Sincronizacion de datos',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                'Para comenzar!',
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               bodyWidget: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Text(
-                  'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ,when an unknown printer took a galley',
-                  style: TextStyle(height: 1.8),
+                  'Para Comenzar con la aplicacion Sacuw se necesitara un archivo kismet generado por Linux al cual debe instalar antes de generar el archivo ya que linux no lo trae instalado.' 
+                  ' Por otro lado un programa para comvertir el kistmet a json. aqui mismo tiene la explicacion. ',
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(
+                      height: 1.8, fontSize: 20, fontWeight: FontWeight.w500),
+                ),
+              ),
+              image: buildImage(
+                'assets/onboarding/1slider.png',
+              ),
+            ),
+            PageViewModel(
+              titleWidget: Text(
+                'Kismet to Json',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              bodyWidget: Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: RichText(
+                  text: TextSpan(
+                    text:
+                        "Dentro de la consola de Linux colocaremos estas tres lineas. \n",
+                    style: TextStyle(
+                        color: Colors.black,
+                        height: 1.8,
+                        fontSize: 15.5,
+                        fontWeight: FontWeight.w400),
+                    children: [
+                      TextSpan(
+                          text: '1.',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text:
+                              " git clone https://github.com/jnsgruk/kismet-kml. \n"),
+                      TextSpan(
+                          text: '2.',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text: " Entramos al directorio 'cd kismet-kml'.\n"),
+                      TextSpan(
+                          text: '3.',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text:
+                              " Colocamos en consola python3 kismet-kml.py <Archivo Kismet> 'Sin el mayor y menor.' \n"),
+                      TextSpan(
+                          text: 'Nota: ',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text:
+                              "Si por alguna razon sale el error 'simpleKml' solo debemos instalar 'pip install simplekml'."),
+                    ],
+                  ),
+                  textAlign: TextAlign.justify,
+                  strutStyle: StrutStyle(),
                 ),
               ),
               image: buildImage(
@@ -30,19 +84,48 @@ class SliderExplainPage extends StatelessWidget {
             ),
             PageViewModel(
               titleWidget: Text(
-                'Carga del archivo al servidor',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                'Carga de datos',
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               bodyWidget: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
-                child: Text(
-                  'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ,when an unknown printer took a galley',
-                  style: TextStyle(height: 1.8),
+                child: RichText(
+                  text: TextSpan(
+                    text:
+                        "Ya teniendo nuestro archivo kismet convertido a Json, dispondremos para cargarlo en la base de datos Firebase. \n",
+                    style: TextStyle(
+                        color: Colors.black,
+                        height: 1.8,
+                        fontSize: 15.5,
+                        fontWeight: FontWeight.w400),
+                    children: [
+                      TextSpan(
+                          text: '1.',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text:
+                              " Cargamos el archivo en el apartado 'RealTime Database' \n"),
+                      TextSpan(
+                          text: '2.',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text: " Clickeamos en los tres puntos para importar el archivo json \n"),
+                      
+                      TextSpan(
+                          text: 'Nota: ',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(
+                          text:
+                              "Si no tiene una base de datos cree una nueva'."),
+                    ],
+                  ),
+                  textAlign: TextAlign.justify,
+                  strutStyle: StrutStyle(),
                 ),
               ),
               image: buildImage(
-                'assets/onboarding/exportFiles.png',
+                'assets/onboarding/Slider3.png',
               ),
             ),
             PageViewModel(
@@ -54,8 +137,9 @@ class SliderExplainPage extends StatelessWidget {
               bodyWidget: Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Text(
-                  'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, ,when an unknown printer took a galley',
-                  style: TextStyle(height: 1.8),
+                  'Al finalizar los procesos anteriores ya puede disponer de su información que se genero por medio del archivo Kismet que se convirtio en Json. ',
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(height: 1.8, fontSize: 20),
                 ),
               ),
               image: buildImage(
@@ -137,3 +221,9 @@ class SliderExplainPage extends StatelessWidget {
     );
   }
 }
+
+
+/*
+
+
+ */
