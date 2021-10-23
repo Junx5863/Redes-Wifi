@@ -70,17 +70,27 @@ class _TextInsideScreenState extends State<TextInsideScreen> {
                   controller: this.appsLink,
                   autocorrect: false,
                   keyboardType: TextInputType.text,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor agregue el link de "Ap"';
+                    }
+                    return null;
+                  },
                   //obscureText: this.ispassword,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.link),
                     border: InputBorder.none,
-                    hintText: 'Link 1',
+                    hintText: 'Ap',
                   ),
                 ),
               ),
               ElevatedButton(
                 onPressed: () async {
                   saveLinkAcces(this.appsLink.text);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Url o Api Cargada."),
+                    backgroundColor: Colors.green,
+                  ));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black,
@@ -120,17 +130,27 @@ class _TextInsideScreenState extends State<TextInsideScreen> {
                   controller: this.bridgetLink,
                   autocorrect: false,
                   keyboardType: TextInputType.text,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor agregue el link de "Bridget"';
+                    }
+                    return null;
+                  },
                   //obscureText: this.ispassword,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.link),
                     border: InputBorder.none,
-                    hintText: 'Link 2',
+                    hintText: 'Bridget',
                   ),
                 ),
               ),
               ElevatedButton(
                 onPressed: () async {
                   saveBridgetAcces(this.bridgetLink.text);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Url o Api Cargada."),
+                    backgroundColor: Colors.green,
+                  ));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black,
@@ -170,17 +190,27 @@ class _TextInsideScreenState extends State<TextInsideScreen> {
                   controller: this.otherLink,
                   autocorrect: false,
                   keyboardType: TextInputType.text,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor agregue el link de "Other"';
+                    }
+                    return null;
+                  },
                   //obscureText: this.ispassword,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.link),
                     border: InputBorder.none,
-                    hintText: 'Link 3',
+                    hintText: 'Other: ',
                   ),
                 ),
               ),
               ElevatedButton(
                 onPressed: () async {
                   saveOtherAcces(this.otherLink.text);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Url o Api Cargada."),
+                    backgroundColor: Colors.green,
+                  ));
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.black,
