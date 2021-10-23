@@ -184,7 +184,7 @@ class SliderExplainPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MenuScreen(),
+                builder: (context) => TextInsideScreen(),
               ),
             );
           },
