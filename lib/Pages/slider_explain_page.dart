@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:red_wfi/Pages/menu.dart';
+import 'package:red_wfi/Pages/view/screen/text_inside.dart';
 
 class SliderExplainPage extends StatelessWidget {
   //const SliderExplainPge({ Key key}) : super(key: key);
@@ -150,7 +151,8 @@ class SliderExplainPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MenuScreen(),
+                      //builder: (context) => MenuScreen(),
+                      builder: (context) => TextInsideScreen()
                     ),
                   );
                 },

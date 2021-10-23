@@ -28,7 +28,6 @@ class _MenuScreenState extends State<MenuScreen> {
         items: [
           Icon(Icons.home, size: 30),
           Icon(Icons.gps_fixed, size: 30),
-          
         ],
         onTap: (index) {
           setState(() {

@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:red_wfi/Pages/view/detail_card/detail_info_red_screen.dart';
 import 'package:red_wfi/Pages/menu.dart';
 import 'package:red_wfi/Pages/slider_explain_page.dart';
+import 'package:red_wfi/Pages/view/screen/aps_list_screen.dart';
+import 'package:red_wfi/Pages/view/screen/bridget_list_screen.dart';
+import 'package:red_wfi/Pages/view/screen/other_list_screen.dart';
 
 import 'Pages/view/menu_screen/gps_list.dart';
 import 'Pages/view/screen/aps_list_to_gps.dart';
@@ -25,6 +28,9 @@ class MyApp extends StatelessWidget {
         'MenuPage': (_) => MenuScreen(),
         'CardDetail': (_) => CardDetailScreen(),
         'GPSListMap': (_) => GpsList(),
+        'AppLink': (_) => HomeScreen(),
+        'BridgetLink': (_) => BridgetScreen(),
+        'OtherLink': (_) => OtherListScreen(),
       },
     );
   }
